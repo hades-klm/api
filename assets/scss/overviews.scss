@@ -1,0 +1,33 @@
+.itemlist{
+  .oneItem{
+    border-top:  1px dotted #CCC;
+    border-bottom: 1px dotted #CCC;
+    padding: 0 10px;
+    display: block;
+
+    &.active{
+      background-color: #fcf6e8;
+    }
+    &:hover{
+      background: rgba(100,100,100, 0.05)
+    }
+    .dates{
+      font-size: 0.8em;
+      line-height: 20px;
+      color: #666;
+      font-style: italic;
+    }
+    h4{
+      margin-top: 0;
+      margin-bottom: 3px;
+    }
+    p{
+      margin-bottom: 5px;
+    }
+    footer{
+      font-size: 0.8em;
+      color: #666;
+    }
+  }
+}
+
