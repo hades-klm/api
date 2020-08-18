@@ -1,0 +1,151 @@
+$standardMargin: 1; // percentage of column-space between colums
+$gridSize: 12; // Number of columns
+
+$minSizeA: 1024; // Desktop and bigger
+$minSizeB: 768; // tablets, big smartphones
+$minSizeC: 0; // smartphones
+
+$standardGrid: ''; /* eg: .A1, .A2, .A3, .B1, .B2, .B3, .C1, .C2, .C3 */
+$marginlessGrid: ''; /* eg: .A1nm, .A2nm, .A3nm, .B1nm, .B2nm, .B3nm, .C1nm, .C2nm, .C3nm */
+$standardGridImg: ''; /* eg: .A1 >img, .A2 >img, .A3 >img */
+$marginlessGridImg: ''; /* eg: .A1nm >img, .A2nm >img, .A3nm >img */
+$gridWithImages: ''; /* eg: .A1 >a>img, .A2 >a>img, .A3 >a>img, .A1nm >a>img, .A2nm >a>img, .A3nm >a>img */
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+@function toColumns($i, $format) {
+  @return str-replace(
+                  str-replace($format, '{grade}', 'A')
+            +str-replace($format, '{grade}', 'B')
+            +str-replace($format, '{grade}', 'C'),'{$i}', $i);
+}
+
+@for $i from 1 through $gridSize {
+  $standardGrid: $standardGrid + toColumns($i, ',.{grade}{$i}');
+  $marginlessGrid: $marginlessGrid + toColumns($i, ',.{grade}{$i}nm');
+  $standardGridImg: $standardGridImg + toColumns($i, ',.{grade}{$i} img');
+  $marginlessGridImg: $marginlessGridImg + toColumns($i, ',.{grade}{$i}nm >img');
+  $gridWithImages: $gridWithImages + toColumns($i, ',.{grade}{$i} >*>img, .{grade}{$i}nm >*>img');
+}
+
+$standardGrid: str-slice($standardGrid, 2);
+$marginlessGrid: str-slice($marginlessGrid, 2);
+$standardGridImg: str-slice($standardGridImg, 2);
+$marginlessGridImg: str-slice($marginlessGridImg, 2);
+$gridWithImages: str-slice($gridWithImages, 2);
+
+#{$standardGrid},
+#{$marginlessGrid} {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+#{$standardGrid} {
+  margin-left: percentage($standardMargin/100);
+  margin-right: percentage($standardMargin/100);
+}
+
+#{$standardGridImg},
+#{$marginlessGridImg},
+#{$gridWithImages} {
+  max-width: 100%;
+}
+.gridTL{ text-align: left; }
+.gridTC{ text-align: center; }
+.gridTR{ text-align: right; }
+
+
+// Alle C & hoger koloummen
+@for $i from 1 through $gridSize {
+  $columnWidth: percentage(1/12* $i);
+  .C#{$i} {
+    width: $columnWidth - $standardMargin*2;
+  }
+  .C#{$i}nm {
+    width: $columnWidth;
+  }
+}
+
+// Alle B & hoger kolommen
+@media screen and (min-width: #{$minSizeB}px) {
+  @for $i from 1 through $gridSize {
+    $columnWidth: percentage(1/12* $i);
+    .B#{$i} {
+      width: $columnWidth - $standardMargin*2;
+    }
+    .B#{$i}nm {
+      width: $columnWidth;
+    }
+  }
+}
+
+// Alle A kolommen
+@media screen and (min-width: #{$minSizeA}px) {
+  @for $i from 1 through $gridSize {
+    $columnWidth: percentage(1/12* $i);
+    .A#{$i} {
+      width: $columnWidth - $standardMargin*2;
+    }
+    .A#{$i}nm {
+      width: $columnWidth;
+    }
+  }
+}
+
+// Van C tot B
+@media screen and (max-width: #{$minSizeB}px) {
+  .hideWhenC {
+    display: none;
+  }
+  .showWhenC {
+    display: inherit;
+  }
+
+  .showWhenA {
+    display: none;
+  }
+  .showWhenB {
+    display: none;
+  }
+}
+
+// Van B tot A
+@media screen and (min-width: #{$minSizeB}px) and (max-width: #{$minSizeA}px) {
+  .hideWhenB {
+    display: none;
+  }
+  .showWhenB {
+    display: inherit;
+  }
+
+  .showWhenA {
+    display: none;
+  }
+  .showWhenC {
+    display: none;
+  }
+}
+
+// Van A
+@media screen and (min-width: #{$minSizeA}px) {
+  .hideWhenA {
+    display: none;
+  }
+  .showWhenA {
+    display: inherit;
+  }
+
+  .showWhenB {
+    display: none;
+  }
+  .showWhenC {
+    display: none;
+  }
+}

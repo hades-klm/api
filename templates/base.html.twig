@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ page.title }}{% endblock %} &bull; HADES DING</title>
+
+    {% block stylesheets %}{% endblock %}
+    {{ encore_entry_link_tags('website') }}
+</head>
+<body>
+
+
+<header id="mainHeader">
+    <div class="pageWidth">
+        <div id="menuToggler">
+            MENU
+        </div>
+        <div id="logoWrap">
+            <a href="/">
+                HOME / LOGO?
+            </a>
+        </div>
+        <nav id="mainNav">
+            <ul>
+                <li>Items hier</li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<div id="mainContent">
+    <div class="pageWidth">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+
+<div id="menuPageOverlay"></div>
+
+<div class="simpleModalBG"></div>
+
+
+{#{{ encore_entry_script_tags('app') }}#}
+{% block javascripts %}{% endblock %}
+</body>
+</html>
