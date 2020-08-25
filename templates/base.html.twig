@@ -26,6 +26,22 @@
                 <li>Items hier</li>
             </ul>
         </nav>
+        <div id="user_account" style="float:right;">
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <p>U bent ingelogd als: <b>{{ app.user }}</b>
+                <div id="logout">
+                    <a href="/logout">
+                        Logout
+                    </a>
+                </div>
+            {% else %}
+                <div id="login">
+                    <a href="/login">
+                        Login
+                    </a>
+                </div>
+            {% endif %}
+        </div>
     </div>
 </header>
 
