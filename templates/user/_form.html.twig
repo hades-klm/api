@@ -3,7 +3,7 @@
         <div class="col">
         {{ form_label(form.nickname) }}
         {{ form_errors(form.nickname) }}
-        {{ form_widget(form.nickname, {'attr': {'placeholder': 'Enter nickname'}}) }}
+        {{ form_widget(form.nickname) }}
         {{ form_help(form.nickname) }}
         </div>
     </div>
@@ -11,7 +11,7 @@
         <div class="col">
         {{ form_label(form.email) }}
         {{ form_errors(form.email) }}
-        {{ form_widget(form.email, {'attr': {'placeholder': 'Enter email'}}) }}
+        {{ form_widget(form.email) }}
         {{ form_help(form.email) }}
         </div>
     </div>
@@ -43,5 +43,5 @@
         {{ form_help(form.roles) }}
         </div>
     </div>
-    <button class="btn btn-outline-dark btn-sm">{{ button_label|default('Save') }}</button>
+    <button class="btn btn-outline-dark btn-sm">{{ button_label|default('buttons.save'|trans([], null, app.request.locale)) }}</button>
 {{ form_end(form) }}

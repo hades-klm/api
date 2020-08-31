@@ -5,9 +5,9 @@
 {% block content %}
     <h1>Edit User</h1>
 
-    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('user/_form.html.twig', {'button_label': 'buttons.update'|trans([], null, app.request.locale)}) }}
 
-    <a href="{{ path('user_index') }}">back to list</a>
+    <a href="{{ path('user_index') }}">{{ 'pagination.goto'|trans([], null, app.request.locale) }} {{ 'pagination.listview'|trans([], null, app.request.locale) }}</a>
 
     {{ include('user/_delete_form.html.twig') }}
 {% endblock %}

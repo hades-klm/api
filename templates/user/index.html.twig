@@ -23,8 +23,8 @@
                 <td>{{ user.nickname }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('user_show', {'id': user.id}) }}">{{ 'buttons.show'|trans([], null, app.request.locale) }}</a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}">{{ 'buttons.edit'|trans([], null, app.request.locale) }}</a>
                 </td>
             </tr>
         {% else %}

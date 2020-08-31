@@ -3,5 +3,7 @@
 {% block title %}Admin Test{% endblock %}
 
 {% block content %}
-    <p>Dit zou beveiligd moeten zijn</p>
+    <p>Dit zou beveiligd moeten zijn (alleen toegankelijk voor ROLE_ADMIN)</p>
+    <p><a href="{{ path('user_index') }}">Gebruikers</a></p
+    <P><a href="{{ path('corporation_index') }}">Corporaties</a></p>
 {% endblock %}
