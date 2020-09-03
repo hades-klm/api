@@ -41,37 +41,6 @@ class DiscordController extends AbstractController
         // ** if you want to *authenticate* the user, then
         // leave this method blank and create a Guard authenticator
 
-        /** @var \KnpU\OAuth2ClientBundle\Client\Provider\DiscordClient $client */
-        $client = $clientRegistry->getClient('discord');
-
-        try {
-            $token = $client->getAccessToken();
-            var_dump($token);
-            
-            // the exact class depends on which provider you're using
-            /** @var \Wohali\OAuth2\Client\Provider\DiscordResourceOwner|\League\OAuth2\Client\Provider\ResourceOwnerInterface $user */
-            $user = $client->fetchUserFromToken($token);
-            // do something with all this new power!
-            var_dump($user);
-
-            $opts = array(
-                'http'=>array(
-                  'method' => "GET",
-                  'header' => "Authorization: Bearer " . $token->getToken()
-                )
-            );
-            
-            $context = stream_context_create($opts);
-            
-            // GET the results by using the HTTP headers set above
-            $guilds = file_get_contents('https://discord.com/api/v6/users/@me/guilds', false, $context);
-            var_dump(json_decode($guilds));
-            die;
-        } catch (IdentityProviderException $e) {
-            // something went wrong!
-            // probably you should return the reason to the user
-            var_dump($e->getMessage());
-            die;
-        }
+        return $this->redirectToRoute('page');
     }
 }

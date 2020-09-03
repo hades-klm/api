@@ -37,13 +37,18 @@ class User implements UserInterface
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $password;
 
     /**
+     * @ORM\Column(type="string", length=36, unique=true, nullable=true)
+     */
+    private $discordId;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Corporation::class, inversedBy="users")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $corporation;
 
@@ -120,6 +125,18 @@ class User implements UserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getDiscordId(): string
+    {
+        return (string) $this->discordId;
+    }
+
+    public function setDiscordId(string $discordId): self
+    {
+        $this->discordId = $discordId;
 
         return $this;
     }
