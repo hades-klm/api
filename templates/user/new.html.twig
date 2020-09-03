@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nieuwe Gebruiker{% endblock %}
+
+{% block content %}
+    <h1>Nieuwe Gebruiker</h1>
+
+    {{ include('user/_form.html.twig') }}
+
+    <a href="{{ path('user_index') }}">{{ 'pagination.goto'|trans([], null, app.request.locale) }} {{ 'pagination.listview'|trans([], null, app.request.locale) }}</a>
+{% endblock %}

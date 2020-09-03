@@ -1,0 +1,39 @@
+user:
+  label:
+    singular: Gebruiker
+    plural: Gebruikers
+  nickname:
+    help: Nickname wordt gebruikt om mee in te loggen!
+    placeholder: Vul nickname in
+  email:
+    placeholder: Vul emailadres in
+  password:
+    invalid: Het wachtwoord moet in beide velden gelijk zijn.
+    first:
+      label: Wachtwoord
+    second:
+      label: Herhaal Wachtwoord
+  corporation:
+    label: Corporatie
+  roles:
+    label: Rollen
+
+pagination:
+  page: Pagina
+  back: Terug
+  forward: Volgende
+  go: Ga
+  to: Naar
+  goto: Ga naar
+  list: Lijst
+  listview: Lijstweergave
+  detailsview: Gedetailleerde weergave
+
+buttons:
+  save: Opslaan
+  delete: Verwijderen
+  update: Bijwerken
+  edit: Aanpassen
+  add: Toevoegen
+  show: Toon
+  show.all: Toon alles

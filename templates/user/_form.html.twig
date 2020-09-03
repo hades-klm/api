@@ -1,0 +1,47 @@
+{{ form_start(form) }}
+    <div class="row">
+        <div class="col">
+        {{ form_label(form.nickname) }}
+        {{ form_errors(form.nickname) }}
+        {{ form_widget(form.nickname) }}
+        {{ form_help(form.nickname) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email) }}
+        {{ form_help(form.email) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+        {{ form_label(form.password.first) }}
+        {{ form_widget(form.password.first) }}
+        {{ form_help(form.password.first) }}
+        </div>
+        <div class="col">
+        {{ form_label(form.password.second) }}
+        {{ form_widget(form.password.second) }}
+        {{ form_help(form.password.second) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+        {{ form_label(form.corporation) }}
+        {{ form_errors(form.corporation) }}
+        {{ form_widget(form.corporation) }}
+        {{ form_help(form.corporation) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+        {{ form_label(form.roles) }}
+        {{ form_errors(form.roles) }}
+        {{ form_widget(form.roles, {'attr': {'class': 'form-check-inline'}}) }}
+        {{ form_help(form.roles) }}
+        </div>
+    </div>
+    <button class="btn btn-outline-dark btn-sm">{{ button_label|default('buttons.save'|trans([], null, app.request.locale)) }}</button>
+{{ form_end(form) }}

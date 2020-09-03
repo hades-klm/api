@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Corporation index{% endblock %}
+
+{% block content %}
+    <h1>Corporation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>DiscordLink</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for corporation in corporations %}
+            <tr>
+                <td>{{ corporation.id }}</td>
+                <td>{{ corporation.name }}</td>
+                <td>{{ corporation.discordLink }}</td>
+                <td>
+                    <a href="{{ path('corporation_show', {'id': corporation.id}) }}">show</a>
+                    <a href="{{ path('corporation_edit', {'id': corporation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('corporation_new') }}">Create new</a>
+{% endblock %}

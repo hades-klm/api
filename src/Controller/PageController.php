@@ -16,4 +16,12 @@ class PageController extends AbstractController
             'controller_name' => 'PageController',
         ]);
     }
+
+    /**
+     * @Route("/admin", name="admin_test")
+     */
+    public function adminTest()
+    {
+        return $this->render('page/admintest.html.twig', []);
+    }
 }
